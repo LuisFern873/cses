@@ -45,3 +45,15 @@ dp[i,j]=
 dp[i + 1,j] + dp[i + 1,j] & \quad \text{otherwise}
 \end{cases}
 $$
+
+## Rod Cutting (Cormen)
+
+Sea $OPT(n)$ el máximo beneficio de cortar y vender las piezas de una varilla de longitud $n$. Definimos $OPT(n)$ recursivamente como sigue:
+
+$$
+OPT(n)=
+\begin{cases}
+0 & \quad \text{when $n=0$}\\ 
+\max_{1\leq i \leq n} (p_i + OPT(n-i)) & \quad \text{otherwise}
+\end{cases}
+$$
