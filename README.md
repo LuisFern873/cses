@@ -2,6 +2,19 @@
 # Dynamic Programming cses problemset
 
 
+## Dice Combinations
+
+
+Sea $dp[n]$ el número de formas de construir una suma $n$ lanzando un dado una o más veces. Definimos $dp[n]$ recursivamente como sigue:
+
+$$
+dp[n]= 
+\begin{cases}
+1 & \quad \text{when $n=0$}\\ 
+\sum^{\min\{n,6\}}_{i=1} dp[n - i] & \quad \text{otherwise}
+\end{cases}
+$$
+
 ## Removing Digits
 
 Sea $n=\overline{d_1d_2...d_j}$ un número con $j$ dígitos.
@@ -19,7 +32,7 @@ $$
 Subestructura óptima:
 
 
-## Grid paths
+## Grid Paths
 
 Sea $M[0…n-1,0…n-1]$  una cuadrícula $n\times n$.
 
