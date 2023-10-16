@@ -7,7 +7,7 @@ using namespace std;
 
 // Input: C[n], x
 // Output: number of distinct ways you can produce a money sum x using the available coins C.
-// OPT(0) = 1
+// OPT(x) = 1, x = 0
 // OPT(x) = Σ {i ∈ C} OPT(x - i)
 
 int count_aux(int x, const vector<int>& coins, vector<int>& memo)
