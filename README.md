@@ -11,7 +11,8 @@ $$
 dp[n]= 
 \begin{cases}
 1 & \quad \text{when $n=0$}\\ 
-\sum_{i=1}^{\min\{n,6\}} dp[n - i] & \quad \text{otherwise}
+\sum_{i=1}^{\min(n,6)} dp[n - i] & \quad \text{otherwise}
+
 \end{cases}
 $$
 
@@ -25,7 +26,7 @@ $$
 OPT(n)=
 \begin{cases}
 1 & \quad \text{when $n$ has only one digit}\\ 
-\min_{1\leq i \leq j} \{OPT(n - d_i)\} + 1 & \quad \text{otherwise}
+\min_{1\leq i \leq j} (OPT(n - d_i))+ 1 & \quad \text{otherwise}
 \end{cases}
 $$
 
