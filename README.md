@@ -48,7 +48,7 @@ $$
 
 ## Rod Cutting (Cormen)
 
-Sea $OPT(n)$ el máximo beneficio de cortar y vender las piezas de una varilla de longitud $n$. Definimos $OPT(n)$ recursivamente como sigue:
+Sea $OPT(n)$ el máximo beneficio de cortar y vender las piezas de una varilla de longitud $n$. Sea $p_i$ el precio de venta de una varilla de longitud $i$ con $1\leq i \leq n$. Definimos $OPT(n)$ recursivamente como sigue:
 
 $$
 OPT(n)=
