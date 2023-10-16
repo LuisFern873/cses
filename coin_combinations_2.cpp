@@ -4,6 +4,10 @@
 
 using namespace std;
 
+#define ll long long
+const int mod = 1e9+7;
+
+
 void print(const vector<int>& vec)
 {
     for (int i : vec) {
@@ -13,7 +17,7 @@ void print(const vector<int>& vec)
 }
 
 
-int combinations(int x, vector<int> coins, unordered_map<int, int>& memo)
+int combinations(int x, vector<ll> coins, unordered_map<int, int>& memo)
 {
     if (x == 0) {
         return 1;
@@ -28,7 +32,7 @@ int combinations(int x, vector<int> coins, unordered_map<int, int>& memo)
     for (int i = 0; i < coins.size(); i++) {
         if (x - coins[i] >= 0) {
             // OPT(n, C) =  Σ OPT(x - C[i], C[i...n])
-            ways += combinations(x - coins[i], vector<int>(coins.begin() + i, coins.end()), memo);
+            ways += combinations(x - coins[i], vector<ll>(coins.begin() + i, coins.end()), memo);
         }
     }
     // memo[x] = ways;
@@ -36,9 +40,30 @@ int combinations(int x, vector<int> coins, unordered_map<int, int>& memo)
     return ways;
 }
 
+int dp(int x, const vector<ll>& coins)
+{
+    int n = coins.size();
+    vector<ll> memo(x + 1, 0); 
+    memo[0] = 1;
+        
+    for (int i = 0; i < n; i++) { // C[i]
+        for (int j = 1; j <= x; j++) {
+            if (j - coins[i] >= 0) {
+                // OPT(n, C) =  Σ OPT(x - C[i], C[i...n])
+                memo[j] = (memo[j] + memo[j - coins[i]]) % mod;
+            }
+        }
+    }
+
+    // print(memo);
+
+    return memo[x];
+}
+
 int main() {
-    int n, x, c;
-    vector<int> coins = {};
+    int n, x;
+    ll c;
+    vector<ll> coins = {};
 
     cin >> n >> x;
 
@@ -50,6 +75,8 @@ int main() {
     unordered_map<int, int> memo;
     memo[0] = 1;
 
+    cout << dp(x, coins) << endl;
+    cout << endl;
     cout << combinations(x, coins, memo) << endl;
 
     // remove(1, coins);
