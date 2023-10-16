@@ -11,7 +11,7 @@ $$
 dp[n]= 
 \begin{cases}
 1 & \quad \text{when $n=0$}\\ 
-\sum^{\min\{n,6\}}_{i=1} dp[n - i] & \quad \text{otherwise}
+\sum_{i=1}^{\min\{n,6\}} dp[n - i] & \quad \text{otherwise}
 \end{cases}
 $$
 
