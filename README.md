@@ -7,6 +7,7 @@
 Sea $n=\overline{d_1d_2...d_j}$ un número con $j$ dígitos.
 
 Sea $OPT(n)$ la cantidad mínima de pasos para hacer 0 el número $n$ sustrayendo uno de sus dígitos. Definimos $OPT(n)$ recursivamente como sigue:
+
 $$
 OPT(n)=
 \begin{cases}
