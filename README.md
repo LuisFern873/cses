@@ -4,7 +4,6 @@
 
 ## Dice Combinations
 
-
 Sea $dp[n]$ el número de formas de construir una suma $n$ lanzando un dado una o más veces. Definimos $dp[n]$ recursivamente como sigue:
 
 $$
@@ -12,7 +11,6 @@ dp[n]=
 \begin{cases}
 1 & \quad \text{when $n=0$}\\ 
 \sum_{i=1}^{\min(n,6)} dp[n - i] & \quad \text{otherwise}
-
 \end{cases}
 $$
 
