@@ -7,6 +7,22 @@ using namespace std;
 #define ll long long
 const int mod = 1e9+7;
 
+int combinations(int x, vector<ll> coins)
+{
+    if (x == 0) {
+        return 1;
+    }
+    int ways = 0;
+
+    for (int i = 0; i < coins.size(); i++) {
+        if (x - coins[i] >= 0) {
+            // OPT(n, C) =  Σ OPT(x - C[i], C[i...n])
+            ways += combinations(x - coins[i], vector<ll>(coins.begin() + i, coins.end()));
+        }
+    }
+
+    return ways;
+}
 
 void print(const vector<int>& vec)
 {
@@ -14,30 +30,6 @@ void print(const vector<int>& vec)
         cout << i << " ";
     }
     cout << "\n";
-}
-
-
-int combinations(int x, vector<ll> coins, unordered_map<int, int>& memo)
-{
-    if (x == 0) {
-        return 1;
-    }
-
-    // if (memo.find(x) != memo.end()) {
-    //     return memo[x];
-    // }
-
-    int ways = 0;
-
-    for (int i = 0; i < coins.size(); i++) {
-        if (x - coins[i] >= 0) {
-            // OPT(n, C) =  Σ OPT(x - C[i], C[i...n])
-            ways += combinations(x - coins[i], vector<ll>(coins.begin() + i, coins.end()), memo);
-        }
-    }
-    // memo[x] = ways;
-
-    return ways;
 }
 
 int dp(int x, const vector<ll>& coins)
@@ -77,7 +69,7 @@ int main() {
 
     cout << dp(x, coins) << endl;
     cout << endl;
-    cout << combinations(x, coins, memo) << endl;
+    cout << combinations(x, coins) << endl;
 
     // remove(1, coins);
     // print(coins);

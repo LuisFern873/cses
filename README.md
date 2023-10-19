@@ -14,6 +14,19 @@ dp[n]=
 \end{cases}
 $$
 
+## Minimizing Coins
+Dado un sistema de monedas $C$ de tamaño $n$
+Sea $x$ el monto a cambiar
+$$
+OPT(x)= 
+\begin{cases}
+1 & \quad \text{when $n=0$}\\ 
+\min_{1\leq i\leq n} OPT(x- c_i) & \quad \text{otherwise}
+\end{cases}
+$$
+
+
+
 ## Removing Digits
 
 Sea $n=\overline{d_1d_2...d_j}$ un número con $j$ dígitos.
