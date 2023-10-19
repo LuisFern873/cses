@@ -62,7 +62,7 @@ $$
 
 ## Rectangle Cutting
 
-Sea $OPT(n,m)$ la mínima cantidad de movimientos para cortar un rectángulo $n \times m $en cuadrados. Definimos $OPT(n,m)$ recursivamente como sigue:
+Sea $OPT(n,m)$ la mínima cantidad de movimientos para cortar un rectángulo $n \times m $ en cuadrados. Definimos $OPT(n,m)$ recursivamente como sigue:
 
 $$
 OPT(n,m)=
