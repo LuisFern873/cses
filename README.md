@@ -17,6 +17,7 @@ $$
 ## Minimizing Coins
 Dado un sistema de monedas $C$ de tamaño $n$
 Sea $x$ el monto a cambiar
+
 $$
 OPT(x)= 
 \begin{cases}
@@ -56,6 +57,19 @@ dp[i,j]=
 0 & \quad \text{when $i=n ∨ j=n ∨ M[i,j]="*"$}\\ 
 1 & \quad \text{when $i=n-1 ∧j=n-1$}\\
 dp[i + 1,j] + dp[i + 1,j] & \quad \text{otherwise}
+\end{cases}
+$$
+
+## Rectangle Cutting
+
+Sea $OPT(n,m)$ la mínima cantidad de movimientos para cortar un rectángulo $n \times m $en cuadrados. Definimos $OPT(n,m)$ recursivamente como sigue:
+
+$$
+OPT(n,m)=
+\begin{cases}
+\infty & \quad \text{when $n<1 ∨ m<1$}\\ 
+0 & \quad \text{when $n=m$}\\
+\min_{1\leq k<n}^{1\leq q<m} (OPT(k,m) + OPT(n - k,m),OPT(n,q)+OPT(n,m-q)) & \quad \text{otherwise}
 \end{cases}
 $$
 
