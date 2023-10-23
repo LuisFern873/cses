@@ -20,6 +20,21 @@ def OPT(i, j, cuts):
 
     return q + (j - i)
 
-cuts = [2, 4, 7]
+def DP(i, j):
 
-print(OPT(0, 10, cuts))
+    if j - i == 1:
+        return 0
+    
+    q = float("inf")
+    for cut in cuts:
+        if i < cut < j:
+            q = min(q, DP(i, cut) + DP(cut, j))
+    
+    if q == float("inf"):
+        return 0
+    else:
+        return q + (j - i)
+    
+cuts = [2, 4]
+
+print(DP(0, 10))

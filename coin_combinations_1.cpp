@@ -4,6 +4,7 @@
 
 using namespace std;
 
+#define mod 1E9 + 7
 
 // Input: C[n], x
 // Output: number of distinct ways you can produce a money sum x using the available coins C.

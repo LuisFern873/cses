@@ -2,7 +2,7 @@
 # Dynamic Programming cses problemset
 
 
-## Dice Combinations
+## Dice Combinations (Ejercicio 5)
 
 Sea $dp[n]$ el número de formas de construir una suma $n$ lanzando un dado una o más veces. Definimos $dp[n]$ recursivamente como sigue:
 
@@ -15,16 +15,20 @@ dp[n]=
 $$
 
 ## Minimizing Coins
-Dado un sistema de monedas $C$ de tamaño $n$
-Sea $x$ el monto a cambiar
+Tenemos un sistema de monedas $C=[c_1,c_2,...c_n]$ de tamaño $n$. Sea $OPT(x)$ la mínima cantidad de monedas requeridas para formar un monto $x$. Definimos $OPT(x)$ recursivamente como sigue:
 
 $$
 OPT(x)= 
 \begin{cases}
-1 & \quad \text{when $n=0$}\\ 
-\min_{1\leq i\leq n} OPT(x- c_i) & \quad \text{otherwise}
+0 & \quad \text{when $x=0$}\\ 
+\min_{1\leq i\leq n} OPT(x- c_i)+1 & \quad \text{otherwise}
 \end{cases}
 $$
+
+Subestructura óptima:
+
+Suponga que $X$ (lista de monedas) es una solución óptima para el problema.
+Sea $Y$ 
 
 
 
@@ -54,9 +58,9 @@ Sea $dp[i,j]$  el número de caminos posibles para llegar desde $M[i,j]$ a $M[n-
 $$
 dp[i,j]=
 \begin{cases}
-0 & \quad \text{when $i=n ∨ j=n ∨ M[i,j]="*"$}\\ 
+0 & \quad \text{when $i=n ∨ j=n ∨ M[i,j]='*'$}\\ 
 1 & \quad \text{when $i=n-1 ∧j=n-1$}\\
-dp[i + 1,j] + dp[i + 1,j] & \quad \text{otherwise}
+dp[i + 1,j] + dp[i,j + 1] & \quad \text{otherwise}
 \end{cases}
 $$
 
@@ -84,3 +88,28 @@ OPT(n)=
 \max_{1\leq i \leq n} (p_i + OPT(n-i)) & \quad \text{otherwise}
 \end{cases}
 $$
+
+## Matrix Chain Multiplication
+
+Sea $m[i,j]$ la mínima cantidad de productos escalares para computar $A_{i:j}$
+Definimos $m[i,j]$ recursivamente como sigue:
+
+$$
+m[i,j] = 
+\begin{cases}
+0 \quad & i = j\\
+\min_{i\leq k < j} m[i, k] + m[k+1, j] + p[i-1]p[k]p[j] \quad & i < j
+\end{cases}
+
+$$
+
+## Longest increasing subsequence
+
+
+$$
+OPT(n) =
+\max_{j < i} {OPT(j) : A[j] < A[i]}
+
+
+$$
+
