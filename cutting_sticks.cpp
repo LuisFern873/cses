@@ -15,9 +15,9 @@ int OPT(int i, int j, const vector<int>& cuts)
 
     int q = INT_MAX;
 
-    for (int k = 0; k < cuts.size(); k++) {
-        if (i < cuts[k] and cuts[k] < j ) {
-            q = min(q, OPT(i, cuts[k], cuts) + OPT(cuts[k], j, cuts));
+    for (int k : cuts) {
+        if (i < k and k < j) {
+            q = min(q, OPT(i, k, cuts) + OPT(k, j, cuts));
         }
     }
 
@@ -28,23 +28,44 @@ int OPT(int i, int j, const vector<int>& cuts)
     }
 }
 
-// OPT(0, n)
+template <typename T>
+void print(const vector<vector<T>>& dp) {
+    for (vector<T> row : dp) {
+        for (T value : row) {
+            cout << value << " ";
+        }
+        cout << endl;
+    }
+}
+
 int cutting_sticks(int l, const vector<int>& cuts)
 {
     vector<vector<int>> dp(l + 1, vector<int>(l + 1, 0));
 
-    for (int j = 1; j <= l; j++) {
-        for (int i = )
+    for (int j = 2; j <= l; j++) {
+        for (int i = j - 2; i >= 0; i--) {
+            int q = INT_MAX;
+            for (int k : cuts) {
+                if (i < k and k < j) {
+                    q = min(q, dp[i][k] + dp[k][j]);
+                }
+            }
+            if (q == INT_MAX) {
+                dp[i][j] = 0;
+            } else {
+                dp[i][j] = q + (j - i);
+            }
+        }
     }
+
+    print(dp);
 
     return dp[0][l];
 }
+
 int main() {
-
+    int l = 10;
     vector<int> cuts = {2, 4, 7};
-
-    cout << OPT(0, 10, cuts) << endl;
-
-
+    cout << cutting_sticks(l, cuts) << endl;
     return 0;
 }
